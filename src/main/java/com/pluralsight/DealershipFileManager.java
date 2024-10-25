@@ -6,12 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class DealershipFileManager {
-    public static String filePath = "src/main/resources/inventory.csv";
 
-    public void getDealership() {
+    public static Dealership getDealership() {
         Dealership dealership = new Dealership("TK Auto","111 Old Benbrook Rd","817-555-5555");
+        String filePath = "src/main/resources/inventory.csv";
         try {
-            FileReader fileReader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
             String input;
             while ((input = bufferedReader.readLine()) != null) {
@@ -30,11 +29,10 @@ public class DealershipFileManager {
                 double price = Double.parseDouble(tokens[7]);
 
                 //populate inventory with list of Vehicles
-                Vehicle vehicle = new Vehicle( 00000, 0000, "","", "", "", 000000, 00000.00);
+                Vehicle vehicle = new Vehicle(vin,year,make,model,vehicleType,color,odometer,price);
                 dealership.addVehicle(vehicle);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return dealership;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
