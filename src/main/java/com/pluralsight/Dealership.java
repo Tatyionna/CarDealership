@@ -5,20 +5,23 @@ import java.util.List;
 
 public class Dealership {
     private String name, address, phone;
-    public List <Vehicle> inventory;
+    private List <Vehicle> vehicles;
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.inventory = new ArrayList<>();
+        this.vehicles = new ArrayList<>();
+    }
+    public Dealership () {
+        vehicles = new ArrayList<>();
     }
     public void addVehicle(Vehicle vehicle) {
-        inventory.add(vehicle);
+        vehicles.add(vehicle);
     }
 
-    public void getAllVehicles () {
-        List<Vehicle> allVehicles;
+    public List<Vehicle> getAllVehicles () {
+       return vehicles;
     }
 
     public void getVehiclesByPrice (double min, double max) {
